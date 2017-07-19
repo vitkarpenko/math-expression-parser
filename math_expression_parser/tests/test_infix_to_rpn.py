@@ -7,9 +7,8 @@ def parser():
     return Parser()
 
 @pytest.mark.parametrize('test_input, expected', [
-    ('3 + 8', 11),
-    ('8 * ( 1 + 2 )', 24),
-    ('1 - ( ( ( 1 0 0 - 1 0 0 ) ) )', 1),
+    ('3 + 8', '3 8 +'),
+    ('( 3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3 )', '3 4 2 * 1 5 - 2 3 ^ ^ / +'),
 ])
 def test_eval(test_input, expected, parser):
-    assert parser.parse_infix(test_input) == expected
+    assert parser.infix_to_rpn(test_input) == expected
