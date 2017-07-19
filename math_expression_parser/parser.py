@@ -2,6 +2,8 @@ from collections import deque
 
 
 class Parser:
+    """Evaluates basic mathematical expressions.
+    """
     def __init__(self):
         # in order of precedence
         self.operators = [
@@ -9,10 +11,14 @@ class Parser:
         ]
 
     def parse_infix(self, _input):
+        """Returns value of an expression, written in infix form.
+        """
         rpn = self.infix_to_rpn(_input)
         return self.eval_rpn(rpn)
 
     def infix_to_rpn(self, _input):
+        """Translates infix form to reverse polish notation.
+        """
         output = []
         operators = []
         tokens = _input.split()
@@ -45,6 +51,8 @@ class Parser:
         return ' '.join(output)
 
     def eval_rpn(self, _input):
+        """Computes an expression, written in reverse polish notation.
+        """
         operations = {
             '+': lambda x, y: x + y,
             '-': lambda x, y: x - y,
